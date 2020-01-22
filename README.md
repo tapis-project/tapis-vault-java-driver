@@ -1,5 +1,7 @@
 Vault Java Driver
 =================
+This is a clone of https://github.com/BetterCloud/vault-java-driver created to quickly address Tapis project needs in the original code.  The intent is to contribute any changes back to the original repository and deprecate this one.
+
 A zero-dependency Java client for the [Vault](https://www.vaultproject.io/) secrets management solution from
 HashiCorp. 
 

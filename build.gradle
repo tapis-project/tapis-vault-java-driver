@@ -4,7 +4,7 @@ apply plugin: 'signing'
 apply plugin: 'checkstyle'
 
 group 'com.bettercloud'
-archivesBaseName = 'vault-java-driver'
+archivesBaseName = 'tapis-vault-java-driver'
 version '5.1.0'
 ext.isReleaseVersion = !version.endsWith('SNAPSHOT')
 
@@ -164,7 +164,7 @@ uploadArchives {
                 authentication(userName: ossrhUsername, password: ossrhPassword)
             }
 
-//            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+//            snapshotRepository(url: "https://maven.tacc.utexas.edu/nexus/content/repositories/thirdparty/") {
 //                authentication(userName: ossrhUsername, password: ossrhPassword)
 //            }
             snapshotRepository(url: nexusUrl) {
@@ -172,40 +172,30 @@ uploadArchives {
             }
 
             pom.project {
-                name 'vault-java-driver'
+                name 'tapis-vault-java-driver'
                 packaging 'jar'
                 // optionally artifactId can be defined here
                 description 'Zero-dependency Java client for HashiCorp\'s Vault'
-                url 'https://github.com/BetterCloud/vault-java-driver'
+                url 'https://github.com/tapis-project/tapis-vault-java-driver'
 
                 scm {
-                    connection 'https://github.com/BetterCloud/vault-java-driver.git'
-                    developerConnection 'https://github.com/BetterCloud/vault-java-driver.git'
-                    url 'https://github.com/BetterCloud/vault-java-driver'
+                    connection 'https://github.com/tapis-project/tapis-vault-java-driver.git'
+                    developerConnection 'https://github.com/tapis-project/tapis-vault-java-driver.git'
+                    url 'https://github.com/tapis-project/tapis-vault-java-driver'
                 }
 
                 licenses {
                     license {
                         name 'MIT'
-                        url 'https://github.com/BetterCloud/vault-java-driver/blob/master/README.md'
+                        url 'https://github.com/tapis-project/tapis-vault-java-driver/blob/master/README.md'
                     }
                 }
 
                 developers {[
                     developer {
-                        id 'steve-perkins'
-                        name 'Steve Perkins'
-                        email 'steve@steveperkins.com'
-                    },
-                    developer {
-                        id 'steve-perkins-bc'
-                        name 'Steve Perkins'
-                        email 'steve.perkins@bettercloud.com'
-                    },
-                    developer {
-                        id 'jarrodcodes'
-                        name 'Jarrod Young'
-                        email 'jarrodsy@gmail.com'
+                        id 'rcardone'
+                        name 'Richard Cardone'
+                        email 'rcardone@tacc.utexas.edu'
                     }
                 ]}
             }
