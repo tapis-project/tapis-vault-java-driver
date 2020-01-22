@@ -98,14 +98,19 @@ public class LogicalUtilities {
         if (operation.equals(Logical.logicalOperations.listV2)) {
             // Version 2
             adjustedPath.append(addQualifierToPath(pathSegments, prefixPathDepth, "metadata"));
+            // Whether or not the path ends with a slash determines whether
+            // a metadata LIST or GET command gets sent.  The former returns
+            // the names of the secrets in the folder, the latter returns 
+            // version information about a secret. 
             if (path.endsWith("/")) {
                 adjustedPath.append("/");
+                adjustedPath.append("?list=true");
             }
         } else {
             // Version 1
             adjustedPath.append(path);
+            adjustedPath.append("?list=true");
         }
-        adjustedPath.append("?list=true");
         return adjustedPath.toString();
     }
 

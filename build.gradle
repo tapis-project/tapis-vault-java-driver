@@ -3,9 +3,9 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 apply plugin: 'checkstyle'
 
-group 'com.bettercloud'
+group 'edu.utexas.tacc.tapis'
 archivesBaseName = 'tapis-vault-java-driver'
-version '5.1.0'
+version '5.1.0-SNAPSHOT'
 ext.isReleaseVersion = !version.endsWith('SNAPSHOT')
 
 // This project is actually limited to Java 8 compatibility.  See below.
@@ -160,15 +160,16 @@ uploadArchives {
         mavenDeployer {
             beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+            repository(url: "https://maven.tacc.utexas.edu/nexus/content/repositories/snapshots/") {
+                authentication(userName: nexusUsername, password: nexusPassword)
             }
 
-//            snapshotRepository(url: "https://maven.tacc.utexas.edu/nexus/content/repositories/thirdparty/") {
+//            snapshotRepository(url: "https://maven.tacc.utexas.edu/nexus/content/repositories/snapshots/") {
 //                authentication(userName: ossrhUsername, password: ossrhPassword)
 //            }
-            snapshotRepository(url: nexusUrl) {
-                authentication(userName: nexusUsername, password: nexusPassword)
+            snapshotRepository(url: "https://maven.tacc.utexas.edu/nexus/content/repositories/snapshots/") {
+                authentication(userName: System.getProperty("nexusUsername"), 
+                               password: System.getProperty("nexusPassword"))
             }
 
             pom.project {
