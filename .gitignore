@@ -15,3 +15,7 @@ bin
 .settings
 .classpath
 .project
+
+# Binary targets
+target
+*~
